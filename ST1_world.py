@@ -18,10 +18,7 @@ class Server :
         self.server_id = server_id
         self.cpu_capacity = cpu_capacity
         self.cpu_used = 0
-# Can server fits the Job?
-    def FreeCPU(self, job):
-        free_cpu = self.cpu_capacity - self.cpu_used
-        return free_cpu >= job.cpu_need
+# Can server fits the Job
 
 # PUt the job into Server
     def Run_Job(self , job) :

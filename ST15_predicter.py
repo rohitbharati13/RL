@@ -1,24 +1,14 @@
-# ST15_predictor.py
-# A simple LSTM that predicts future workload from recent history load.
-# Testing on a sine wave first.
-
 import numpy as np
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 
 
-# THE LSTM Use
-# LSTM = a neural network good at sequences.
-# Input: last N workload values. Output: next M predicted values.
-
 class WorkloadPredictor(nn.Module):
     def __init__(self, input_len=10, output_len=5, hidden=32):
         super().__init__()
         self.output_len = output_len
-        # The LSTM reads the sequence
         self.lstm = nn.LSTM(input_size=1, hidden_size=hidden, batch_first=True)
-        # A layer that turns the LSTM's memory into predictions
         self.OPL = nn.Linear(hidden, output_len)
 
     def forward(self, x):
